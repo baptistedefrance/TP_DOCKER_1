@@ -43,3 +43,20 @@ Sécurité accrue car les fichiers sont encapsulés dans l'image et ne peuvent �
 Inconvénients:
 Moins flexible pour le développement rapide, car chaque changement nécessite une reconstruction de l'image.
 Peut augmenter la taille de l'image si de nombreux fichiers sont copiés.
+
+
+5 - 
+
+docker network create mon-reseau-db
+
+
+docker run -d --name ma-base-de-donnees --network mon-reseau-db \                                                        
+-e MYSQL_ROOT_PASSWORD=test \
+-e MYSQL_DATABASE=test \
+-e MYSQL_USER=test \
+-e MYSQL_PASSWORD=test \
+mysql:latest
+
+
+docker run --platform linux/amd64 -d --name mon-phpmyadmin --network mon-reseau-db -e PMA_HOST=ma-base-de-donnees -p 8080:80 phpmyadmin/phpmyadmin
+
