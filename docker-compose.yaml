@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  ma-base-de-donnees:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    networks:
+      - mon-reseau-db
+
+  mon-phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: ma-base-de-donnees
+    ports:
+      - "8080:80"
+    depends_on:
+      - ma-base-de-donnees
+    networks:
+      - mon-reseau-db
+
+networks:
+  mon-reseau-db:
+

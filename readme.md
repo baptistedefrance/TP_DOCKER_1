@@ -60,3 +60,15 @@ mysql:latest
 
 docker run --platform linux/amd64 -d --name mon-phpmyadmin --network mon-reseau-db -e PMA_HOST=ma-base-de-donnees -p 8080:80 phpmyadmin/phpmyadmin
 
+
+a. Docker Compose vs Docker Run
+Docker Run est utilisé pour démarrer un conteneur Docker unique. Il est efficace pour l'exécution ou le test d'un conteneur isolé, mais peut devenir complexe et fastidieux lors de la gestion de multiples conteneurs qui partagent des dépendances, des réseaux ou des volumes.
+
+Docker Compose, en revanche, est un outil qui permet de définir et de gérer l'ensemble de l'infrastructure d'une application multi-conteneurs dans un seul fichier YAML. Cela simplifie le processus de configuration des services, des réseaux et des volumes, permettant à l'utilisateur de démarrer, d'arrêter et de reconstruire l'infrastructure avec des commandes simples. Docker Compose est particulièrement utile pour le développement, les tests automatisés, et les environnements de staging ou de production.
+
+
+docker-compose up
+
+
+docker-compose down
+
